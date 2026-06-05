@@ -10,9 +10,22 @@ class BarangController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $all_barang = Barang::all(); // Mengambil semua data barang dari database
+        // Menangkap teks yang diketik pengguna di kolom pencarian
+        $katakunci = $request->search;
+
+        // Jika pengguna mengetikkan sesuatu
+        if (strlen($katakunci)) {
+            // Cari barang yang nama ATAU kodenya mirip dengan kata kunci
+            $all_barang = Barang::where('nama_barang', 'like', "%$katakunci%")
+                                ->orWhere('kode_barang', 'like', "%$katakunci%")
+                                ->get();
+        } else {
+            // Jika tidak ada pencarian, tampilkan semua barang
+            $all_barang = Barang::all();
+        }
+
         return view('barang.index', compact('all_barang'));
     }
 

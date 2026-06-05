@@ -15,6 +15,21 @@
             </div>
         @endif
 
+        <div class="row mb-3 mt-3">
+            <div class="col-md-5">
+                <form action="{{ route('barang.index') }}" method="GET">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="search" placeholder="Cari nama atau kode barang..." value="{{ request('search') }}">
+                        <button class="btn btn-secondary" type="submit">Cari</button>
+                        
+                        @if(request('search'))
+                            <a href="{{ route('barang.index') }}" class="btn btn-outline-danger">Reset</a>
+                        @endif
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <div class="table-responsive">
             <table class="table table-striped table-hover align-middle">
                 <thead class="table-light">
