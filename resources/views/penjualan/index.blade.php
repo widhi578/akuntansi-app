@@ -1,0 +1,49 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="card shadow-sm border-0">
+    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+        <h5 class="mb-0 fw-bold">Daftar Faktur Penjualan</h5>
+        <a href="{{ route('penjualan.create') }}" class="btn btn-primary btn-sm">Buat Faktur Baru</a>
+    </div>
+    <div class="card-body">
+
+        @if(session('sukses'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('sukses') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>No Faktur</th>
+                        <th>Tanggal</th>
+                        <th>Nama Pelanggan</th>
+                        <th class="text-end">Total Belanja</th>
+                        <th>Keterangan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse($all_penjualan as $item)
+                        <tr>
+                            <td class="fw-bold text-primary">{{ $item->no_faktur }}</td>
+                            <td>{{ date('d-m-Y', strtotime($item->tanggal)) }}</td>
+                            <td>{{ $item->pelanggan->nama_pelanggan }}</td>
+                            <td class="text-end text-success fw-bold">Rp {{ number_format($item->total_harga, 0, ',', '.') }}</td>
+                            <td>{{ $item->keterangan ?? '-' }}</td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="5" class="text-center text-muted py-4">Belum ada transaksi penjualan. Silakan buat faktur baru.</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+@endsection

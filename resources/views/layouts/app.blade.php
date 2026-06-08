@@ -22,6 +22,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('pemasok.index') }}">Pemasok</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold text-warning" href="{{ route('penjualan.index') }}">Penjualan</a>
+                    </li>
                 </ul>
             </div>
         </div>
