@@ -24,6 +24,7 @@
                         <th>Nama Pelanggan</th>
                         <th class="text-end">Total Belanja</th>
                         <th>Keterangan</th>
+                        <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,6 +35,9 @@
                             <td>{{ $item->pelanggan->nama_pelanggan }}</td>
                             <td class="text-end text-success fw-bold">Rp {{ number_format($item->total_harga, 0, ',', '.') }}</td>
                             <td>{{ $item->keterangan ?? '-' }}</td>
+                            <td class="text-center">
+                                <a href="{{ route('penjualan.show', $item->id) }}" class="btn btn-info btn-sm text-white fw-bold">Detail</a>
+                            </td>
                         </tr>
                     @empty
                         <tr>

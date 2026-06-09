@@ -88,4 +88,13 @@ class PenjualanController extends Controller
         // 3. Jika semua berhasil, kembalikan ke halaman daftar dengan pesan sukses
         return redirect()->route('penjualan.index')->with('sukses', 'Faktur Penjualan berhasil disimpan dan stok barang telah dipotong otomatis!');
     }
+
+    // Menampilkan detail spesifik dari satu faktur penjualan
+    public function show(Penjualan $penjualan)
+    {
+        // Memuat (eager load) relasi agar kita bisa memanggil nama pelanggan dan nama barang
+        $penjualan->load('pelanggan', 'detail.barang');
+        
+        return view('penjualan.show', compact('penjualan'));
+    }
 }
