@@ -14,13 +14,19 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+                        <a class="nav-link fw-bold" href="{{ route('dashboard') }}">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('barang.index') }}">Master Barang</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('pelanggan.index') }}">Pelanggan</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('pemasok.index') }}">Pemasok</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold text-info" href="{{ route('pembelian.index') }}">Pembelian</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fw-bold text-warning" href="{{ route('penjualan.index') }}">Penjualan</a>
